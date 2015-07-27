@@ -25,6 +25,8 @@ def generation(chip):
         return "NV5"
     if re.match("NV1[0-9]", chip):
         return "NV10"
+    if chip == "C17":
+        return "NV10"
     if re.match("NV2[0-9]", chip):
         return "NV20"
     if re.match("NV3[0-9]", chip):
@@ -33,9 +35,15 @@ def generation(chip):
         return "NV40"
     if chip == "C61":
         return "NV40"
-    if chip == "C51" or chip == "C51G":
+    if chip == "C51" or chip == "C51G" or chip == "C51PV":
         return "NV40"
     if re.match("G7[0-9]", chip):
+        return "Tesla"
+    if re.match("MCP89", chip):
+        return "Tesla"
+    if chip == "C68" or chip == "C67":
+        return "NV40"
+    if chip == "ION" or chip == "MCP7A":
         return "Tesla"
 
 
@@ -80,5 +88,6 @@ for l in lines:
                 cards[gen][m.group(2)] += [m.group(1)]
         #else:
         #    print l
+cards["NV10"]["NV11"] += ["01a0"] #nForce 220/420 NV11
 import json
 print json.dumps({'10de': cards},indent=4, separators=(',', ': '))
