@@ -1,6 +1,6 @@
 intel.json includes all current intel device ids.
 They were gathered from Wikipedia.
 
-amd.json is best constructed from the mesa code.
+amd.json is constructed from gen-amd.py
 
 nvidia.json is best constructed from https://pci-ids.ucw.cz/read/PC/10de
