@@ -13,7 +13,7 @@ def generation(chip):
         return "Tesla"
     if re.match("G9[0-9]", chip):
         return "Tesla"
-    if chip == "C79" or chip == "C77" or chip == "C73":
+    if chip == "C79" or chip == "C78" or chip == "C77" or chip == "C73" or chip == "MCP79":
         return "Tesla"
     if chip[0:2] == "GF":
         return "Fermi"
@@ -33,6 +33,8 @@ def generation(chip):
         return "NV40"
     if chip == "C61":
         return "NV40"
+    if chip == "C51" or chip == "C51G":
+        return "NV40"
     if re.match("G7[0-9]", chip):
         return "Tesla"
 
@@ -42,7 +44,7 @@ for l in lines:
     if re.match("\t\t", l):
         # we don't need subsys
         continue
-    elif re.search("MCP", l):
+    if re.search("MCP", l) and not re.search("GeForce", l):
         continue
     else:
         if re.search("Audio", l):
