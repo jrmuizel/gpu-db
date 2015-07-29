@@ -37,12 +37,14 @@ def generation(chip):
         return "NV40"
     if chip == "C51" or chip == "C51G" or chip == "C51PV":
         return "NV40"
+    if chip == "C68" or chip == "C67":
+        return "NV40"
+    if re.match("G7[0-3]", chip):
+        return "NV40"
     if re.match("G7[0-9]", chip):
         return "Tesla"
     if re.match("MCP89", chip):
         return "Tesla"
-    if chip == "C68" or chip == "C67":
-        return "NV40"
     if chip == "ION" or chip == "MCP7A":
         return "Tesla"
 
