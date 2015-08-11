@@ -114,7 +114,7 @@ chip['CARRIZO'] = collections.OrderedDict()
 for i in ('CARRIZO',):
     chip['CARRIZO'][i] =  cards[i]
 chip['VI'] = collections.OrderedDict()
-for i in ('TONGA','ICELAND'):
+for i in ('TONGA','ICELAND', 'FIJI'):
     chip['VI'][i] =  cards[i]
 import json
 print json.dumps({'1002': chip},indent=4, separators=(',', ': '))
