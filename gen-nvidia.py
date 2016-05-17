@@ -7,6 +7,8 @@ def generation(chip):
         return "Kepler"
     if chip[0:2] == "GM":
         return "Maxwell"
+    if chip[0:2] == "GP":
+        return "Pascal"
     if chip[0:2] == "GT":
         return "Tesla"
     if re.match("G8[0-9]", chip):
