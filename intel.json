@@ -312,6 +312,10 @@
             ],
             "kabylake-gt4": [
                 "593b"
+            ],
+            "geminilake": [
+                "3184",
+                "3185"
             ]
         },
         "powervr": {
