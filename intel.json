@@ -318,6 +318,28 @@
                 "3185"
             ]
         },
+        "gen10": {
+            "cannonlake-gt0.5": [
+                "5a49",
+                "5a4a"
+            ],
+            "cannonlake-gt1": [
+                "5a41",
+                "5a42",
+                "5a44"
+            ],
+            "cannonlake-gt1.5": [
+                "5a59",
+                "5a5a",
+                "5a5c"
+            ],
+            "cannonlake-gt2": [
+                "5a50",
+                "5a51",
+                "5a52",
+                "5a54"
+            ]
+        },
         "powervr": {
             "sgx535": [
                 "2e5b",
