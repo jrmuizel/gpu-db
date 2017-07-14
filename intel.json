@@ -316,6 +316,23 @@
             "geminilake": [
                 "3184",
                 "3185"
+            ],
+            "coffeelake-gt1": [
+                "3e90",
+                "3e93"
+            ],
+            "coffeelake-gt2": [
+                "3e91",
+                "3e92",
+                "3e96",
+                "3e9b",
+                "3e94"
+            ],
+            "coffeelake-gt3": [
+                "3ea6",
+                "3ea7",
+                "3ea8",
+                "3ea5"
             ]
         },
         "gen10": {
