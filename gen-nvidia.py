@@ -5,10 +5,14 @@ cards = collections.OrderedDict()
 def generation(chip):
     if chip[0:2] == "GK":
         return "Kepler"
+    if chip[0:4] == "GRID":
+        return "Kepler"
     if chip[0:2] == "GM":
         return "Maxwell"
     if chip[0:2] == "GP":
         return "Pascal"
+    if chip[0:2] == "GV":
+        return "Volta"
     if chip[0:2] == "GT":
         return "Tesla"
     if re.match("G8[0-9]", chip):
@@ -90,6 +94,8 @@ for l in lines:
                 if not m.group(2) in cards[gen]:
                     cards[gen][m.group(2)] = []
                 cards[gen][m.group(2)] += [m.group(1)]
+            #else:
+            #    print l
         #else:
         #    print l
 cards["NV10"]["NV11"] += ["01a0"] #nForce 220/420 NV11
