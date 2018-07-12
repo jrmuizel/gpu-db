@@ -2,6 +2,10 @@ import re
 import collections
 cards = collections.OrderedDict()
 
+# initialize some generations so the json ends up in the right order
+for i in ("NV1", "NV4", "NV5", "NV10", "NV20", "NV30"):
+    cards[i] = collections.OrderedDict()
+
 def generation(chip):
     if chip[0:2] == "GK":
         return "Kepler"
