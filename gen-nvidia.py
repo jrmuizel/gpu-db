@@ -3,7 +3,7 @@ import collections
 cards = collections.OrderedDict()
 
 # initialize some generations so the json ends up in the right order
-for i in ("NV1", "NV4", "NV5", "NV10", "NV20", "NV30"):
+for i in ("NV1", "NV3", "NV4", "NV10", "NV20", "NV30"):
     cards[i] = collections.OrderedDict()
 
 def generation(chip):
@@ -29,10 +29,14 @@ def generation(chip):
         return "Fermi"
     if chip == "NV1":
         return "NV1"
+    if chip == "NV3":
+        return "NV3"
     if chip == "NV4":
         return "NV4"
+    if chip == "NV0A":
+        return "NV4"
     if chip == "NV5":
-        return "NV5"
+        return "NV4"
     if re.match("NV1[0-9]", chip):
         return "NV10"
     if chip == "C17":
