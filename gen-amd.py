@@ -10,6 +10,13 @@ for l in lines:
     k = re.match("CHIPSET\((0x[0-9A-Fa-f]*),.*, *(.*)\)", l)
     if k:
         cards[k.group(2)] += [format(int(k.group(1), 16), 'x')]
+    else:
+        # radeonsi_pci_ids.h has only two parameters to CHIPSET so handle it
+        # separately
+        k = re.match("CHIPSET\((0x[0-9A-Fa-f]*), (.*)\)", l)
+        if k:
+            cards[k.group(2)] += [format(int(k.group(1), 16), 'x')]
+
 chips = """
     case CHIP_R300:
     case CHIP_R350:
@@ -115,10 +122,10 @@ chip['CARRIZO'] = collections.OrderedDict()
 for i in ('CARRIZO',):
     chip['CARRIZO'][i] =  cards[i]
 chip['VI'] = collections.OrderedDict()
-for i in ('TONGA','ICELAND', 'FIJI', 'STONEY', 'POLARIS10', 'POLARIS11', 'POLARIS12'):
+for i in ('TONGA','ICELAND', 'FIJI', 'STONEY', 'POLARIS10', 'POLARIS11', 'POLARIS12', 'VEGAM'):
     chip['VI'][i] =  cards[i]
 chip['GFX9'] = collections.OrderedDict()
-for i in ('VEGA10','RAVEN'):
+for i in ('VEGA10','VEGA12', 'RAVEN'):
     chip['GFX9'][i] =  cards[i]
 import json
 print json.dumps({'1002': chip},indent=4, separators=(',', ': '))
