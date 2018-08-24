@@ -19,6 +19,8 @@ def generation(chip):
         return "Volta"
     if chip[0:2] == "GT":
         return "Tesla"
+    if chip[0:2] == "TU":
+        return "Turing"
     if re.match("G8[0-9]", chip):
         return "Tesla"
     if re.match("G9[0-9]", chip):
