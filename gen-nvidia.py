@@ -81,7 +81,9 @@ for l in lines:
             continue
         if re.search("ATA Controller", l):
             continue
-        if re.search("USB Controller", l):
+        if re.search("USB.*Controller", l):
+            continue
+        if re.search("UCSI Controller", l):
             continue
         if re.search("Host Bridge", l):
             continue
