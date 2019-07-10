@@ -126,6 +126,10 @@ for i in ('TONGA','ICELAND', 'FIJI', 'STONEY', 'POLARIS10', 'POLARIS11', 'POLARI
 chip['GFX9'] = collections.OrderedDict()
 for i in ('VEGA10','VEGA12', 'VEGA20', 'RAVEN'):
     chip['GFX9'][i] =  cards[i]
+chip['GFX10'] = collections.OrderedDict()
+for i in ('NAVI10',):
+    chip['GFX10'][i] =  cards[i]
+
 import json
 print json.dumps({'1002': chip},indent=4, separators=(',', ': '))
 #print cards
