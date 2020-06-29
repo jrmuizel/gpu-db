@@ -124,10 +124,10 @@ chip['VI'] = collections.OrderedDict()
 for i in ('TONGA','ICELAND', 'FIJI', 'STONEY', 'POLARIS10', 'POLARIS11', 'POLARIS12', 'VEGAM'):
     chip['VI'][i] =  cards[i]
 chip['GFX9'] = collections.OrderedDict()
-for i in ('VEGA10','VEGA12', 'VEGA20', 'RAVEN'):
+for i in ('VEGA10','VEGA12', 'VEGA20', 'RAVEN', 'RENOIR', 'ARCTURUS'):
     chip['GFX9'][i] =  cards[i]
 chip['GFX10'] = collections.OrderedDict()
-for i in ('NAVI10',):
+for i in ('NAVI10','NAVI12', 'NAVI14'):
     chip['GFX10'][i] =  cards[i]
 
 import json

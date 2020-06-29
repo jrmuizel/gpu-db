@@ -13,6 +13,7 @@ for ven in nv.iteritems():
 for d in sorted(devices):
     up = d[0] >> 8
     good = False
+    """
     if d[0] >= 0x6600 and d[0] < 0x66b0:
         good = True
     if d[0] >= 0x6700 and d[0] < 0x6720:
@@ -30,6 +31,20 @@ for d in sorted(devices):
     if d[0] >= 0x9830 and d[0] < 0x9870:
         good = True
     if d[0] >= 0x9900 and d[0] < 0x9a00:
+        good = True
+    """
+    # Evergreen
+    if d[0] >= 0x6840 and d[0] <= 0x684b:
+        good = True
+    if d[0] >= 0x6850 and d[0] <= 0x685f:
+        good = True
+    if d[0] >= 0x6880 and d[0] <= 0x68ff:
+        good = True
+    if d[0] >= 0x9800 and d[0] <= 0x980a:
+        good = True
+    if d[0] >= 0x9640 and d[0] <= 0x964f:
+        good = True
+    if d[0] >= 0x6720 and d[0] <= 0x677f:
         good = True
 
     if not good:
