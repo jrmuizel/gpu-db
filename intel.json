@@ -409,6 +409,32 @@
                 "8a71"
             ]
         },
+        "gen12": {
+            "rocketlake-gt0.5": [
+                "4c9a"
+            ],
+            "rocketlake-gt1": [
+                "4c8a",
+                "4c8b",
+                "4c90",
+                "4c9a"
+            ],
+            "tigerlake-gt1": [
+                "9a60",
+                "9a68",
+                "9a70"
+            ],
+            "tigerlake-gt2": [
+                "9a40",
+                "9a49",
+                "9a59",
+                "9a78",
+                "9ac0",
+                "9ac9",
+                "9ad9",
+                "9af8"
+            ]
+        },
         "powervr": {
             "sgx535": [
                 "2e5b",
