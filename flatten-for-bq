@@ -1,3 +1,4 @@
+# bq load --replace devices.intel intel.csv
 cat intel.json | jq -r '. as $input | paths(arrays) as $paths | $input | $paths + (getpath($paths) | .[] | [.]) | @csv' > intel.csv
 cat amd.json | jq -r '. as $input | paths(arrays) as $paths | $input | $paths + (getpath($paths) | .[] | [.]) | @csv' > amd.csv
 cat nvidia.json | jq -r '. as $input | paths(arrays) as $paths | $input | $paths + (getpath($paths) | .[] | [.]) | @csv' > nvidia.csv
