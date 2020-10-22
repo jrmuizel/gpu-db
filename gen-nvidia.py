@@ -17,6 +17,12 @@ def generation(chip):
         return "Pascal"
     if chip[0:2] == "GV":
         return "Volta"
+    if chip[0:2] == "GA":
+        return "Ampere"
+    if chip[0:3] == "GT2":
+        return "Tesla2"
+    if re.match("MCP89", chip):
+        return "Tesla2"
     if chip[0:2] == "GT":
         return "Tesla"
     if chip[0:2] == "TU":
@@ -58,8 +64,6 @@ def generation(chip):
     if re.match("G7[0-3]", chip):
         return "NV40"
     if re.match("G7[0-9]", chip):
-        return "Tesla"
-    if re.match("MCP89", chip):
         return "Tesla"
     if chip == "ION" or chip == "MCP7A":
         return "Tesla"
