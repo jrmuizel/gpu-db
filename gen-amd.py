@@ -2,7 +2,7 @@ import re
 import collections
 lines = []
 lines += open("r600_pci_ids.h").readlines()
-lines += open("radeonsi_pci_ids.h").readlines()
+#lines += open("radeonsi_pci_ids.h").readlines()
 lines += open("r200_pci_ids.h").readlines()
 lines += open("r300_pci_ids.h").readlines()
 cards = collections.defaultdict(list)
@@ -16,6 +16,20 @@ for l in lines:
         k = re.match("CHIPSET\((0x[0-9A-Fa-f]*), (.*)\)", l)
         if k:
             cards[k.group(2)] += [format(int(k.group(1), 16), 'x')]
+
+import urllib2
+response = urllib2.urlopen('https://cgit.freedesktop.org/drm/drm/plain/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c')
+html = response.read()
+for line in html.splitlines():
+     if re.match(".*PCI_ANY_ID.*", line):
+         separated = re.split("[ ,{}\t|]", line)
+         separated = list(filter(None, separated))
+         #print format(int(separated[1], 16), 'x'), separated[6][len("CHIP_"):]
+         device_id = format(int(separated[1], 16), 'x')
+         device_name = separated[6][len("CHIP_"):]
+         if device_id not in cards[device_name]:
+             cards[device_name] += [device_id]
+
 
 chips = """
     case CHIP_R300:
@@ -91,6 +105,7 @@ chips = """
     case CHIP_KAVERI:
     case CHIP_KABINI:
     case CHIP_HAWAII:
+    case CHIP_MULLINS:
         ws->info.chip_class = CIK;
         break;
     }
@@ -105,6 +120,7 @@ chip['R100']['R100'] = ['4336','4337','4c57','4c58','4c59','5157','5144','5159',
 chip['R200'] = collections.OrderedDict()
 for i in ('R200', 'RV250', 'RV280', 'RS300'):
     chip['R200'][i] =  cards[i]
+    del cards[i]
 chip_group = []
 for l in chips.split('\n'):
     m = re.search("CHIP_([A-Z0-9]*):", l)
@@ -116,20 +132,31 @@ for l in chips.split('\n'):
             chip[m.group(1)] = collections.OrderedDict()
             for g in chip_group:
                 chip[m.group(1)][g] = cards[g]
+                del cards[g]
             chip_group = []
 chip['CARRIZO'] = collections.OrderedDict()
+
 for i in ('CARRIZO',):
     chip['CARRIZO'][i] =  cards[i]
+    del cards[i]
 chip['VI'] = collections.OrderedDict()
-for i in ('TONGA','ICELAND', 'FIJI', 'STONEY', 'POLARIS10', 'POLARIS11', 'POLARIS12', 'VEGAM'):
+for i in ('TONGA','TOPAZ', 'FIJI', 'STONEY', 'POLARIS10', 'POLARIS11', 'POLARIS12', 'VEGAM'):
     chip['VI'][i] =  cards[i]
+    del cards[i]
 chip['GFX9'] = collections.OrderedDict()
-for i in ('VEGA10','VEGA12', 'VEGA20', 'RAVEN', 'RENOIR', 'ARCTURUS'):
+for i in ('VEGA10','VEGA12', 'VEGA20', 'RAVEN', 'RENOIR', 'ARCTURUS', 'ALDEBARAN'):
     chip['GFX9'][i] =  cards[i]
+    del cards[i]
 chip['GFX10'] = collections.OrderedDict()
 for i in ('NAVI10','NAVI12', 'NAVI14'):
     chip['GFX10'][i] =  cards[i]
+    del cards[i]
+chip['GFX10_3'] = collections.OrderedDict()
+for i in ('SIENNA_CICHLID','NAVY_FLOUNDER', 'VANGOGH', 'DIMGREY_CAVEFISH'):
+    chip['GFX10_3'][i] = cards[i]
+    del cards[i]
 
+assert len(cards) == 0
 import json
 print json.dumps({'1002': chip},indent=4, separators=(',', ': '))
 #print cards
