@@ -103,15 +103,21 @@ for l in lines:
         #    print l
         m = re.match("\t([0-9a-f]+)  ([A-Z0-9]+)", l)
         if m:
-            gen = generation(m.group(2))
+            chip = m.group(2)
+            gen = generation(chip)
+
+            if re.search("RTX 3070 TI Engineering Sample", l):
+                gen = "Ampere"
+                chip = "GA104"
             if gen:
                 if not gen in cards:
                     cards[gen] = collections.OrderedDict()
-                if not m.group(2) in cards[gen]:
-                    cards[gen][m.group(2)] = []
-                cards[gen][m.group(2)] += [m.group(1)]
-            #else:
-            #    print l
+                if not chip in cards[gen]:
+                    cards[gen][chip] = []
+                cards[gen][chip] += [m.group(1)]
+            else:
+                import sys
+                print >> sys.stderr, m.group(2), l
         #else:
         #    print l
 cards["NV10"]["NV11"] += ["01a0"] #nForce 220/420 NV11
