@@ -21,10 +21,10 @@ import urllib2
 response = urllib2.urlopen('https://cgit.freedesktop.org/drm/drm/plain/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c')
 html = response.read()
 for line in html.splitlines():
-     if re.match(".*PCI_ANY_ID.*", line):
+     if re.match(".*PCI_ANY_ID,.*", line):
          separated = re.split("[ ,{}\t|]", line)
          separated = list(filter(None, separated))
-         #print format(int(separated[1], 16), 'x'), separated[6][len("CHIP_"):]
+         #print separated[1], separated[6][len("CHIP_"):]
          device_id = format(int(separated[1], 16), 'x')
          device_name = separated[6][len("CHIP_"):]
          if device_id not in cards[device_name]:
@@ -152,11 +152,12 @@ for i in ('NAVI10','NAVI12', 'NAVI14'):
     chip['GFX10'][i] =  cards[i]
     del cards[i]
 chip['GFX10_3'] = collections.OrderedDict()
-for i in ('SIENNA_CICHLID','NAVY_FLOUNDER', 'VANGOGH', 'DIMGREY_CAVEFISH'):
+for i in ('SIENNA_CICHLID','NAVY_FLOUNDER', 'VANGOGH', 'DIMGREY_CAVEFISH', 'BEIGE_GOBY', 'YELLOW_CARP', 'CYAN_SKILLFISH'):
     chip['GFX10_3'][i] = cards[i]
     del cards[i]
-
-assert len(cards) == 0
+if len(cards) != 0:
+    print cards
+    assert len(cards) == 0
 import json
 print json.dumps({'1002': chip},indent=4, separators=(',', ': '))
 #print cards
