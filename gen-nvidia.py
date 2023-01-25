@@ -3,7 +3,7 @@ import collections
 cards = collections.OrderedDict()
 
 # initialize some generations so the json ends up in the right order
-for i in ("NV1", "NV3", "NV4", "NV10", "NV20", "NV30"):
+for i in ("NV1", "NV3", "NV4", "NV10", "NV20", "NV30", "NV40", "Tesla", "Tesla2", "Fermi", "Kepler", "Maxwell", "Pascal", "Volta", "Turing"):
     cards[i] = collections.OrderedDict()
 
 def generation(chip):
