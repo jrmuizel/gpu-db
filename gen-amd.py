@@ -155,7 +155,9 @@ chip['GFX10_3'] = collections.OrderedDict()
 for i in ('SIENNA_CICHLID','NAVY_FLOUNDER', 'VANGOGH', 'DIMGREY_CAVEFISH', 'BEIGE_GOBY', 'YELLOW_CARP', 'CYAN_SKILLFISH'):
     chip['GFX10_3'][i] = cards[i]
     del cards[i]
+chip['GFX10_3']['VANGOGH'] += ["163f"]
 chip['GFX11'] = collections.OrderedDict()
+chip['GFX11']['NAVI31'] = []
 if len(cards) != 0:
     print cards
     assert len(cards) == 0
@@ -171,7 +173,7 @@ for l in lines:
         
         #gen = generation(chip)
         if chipset == "Navi 31 ":
-            chip['GFX11']['NAVI31'] = m.group(1)
+            chip['GFX11']['NAVI31'] += [m.group(1)]
         #print m.group(1), chip
 import json
 print json.dumps({'1002': chip},indent=4, separators=(',', ': '))
