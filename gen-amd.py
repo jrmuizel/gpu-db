@@ -155,9 +155,24 @@ chip['GFX10_3'] = collections.OrderedDict()
 for i in ('SIENNA_CICHLID','NAVY_FLOUNDER', 'VANGOGH', 'DIMGREY_CAVEFISH', 'BEIGE_GOBY', 'YELLOW_CARP', 'CYAN_SKILLFISH'):
     chip['GFX10_3'][i] = cards[i]
     del cards[i]
+chip['GFX11'] = collections.OrderedDict()
 if len(cards) != 0:
     print cards
     assert len(cards) == 0
+
+lines = open("amd-pci.ids").readlines()
+for l in lines:
+    if re.match("\t\t", l):
+        # we don't need subsys
+        continue
+    m = re.match("\t([0-9a-f]+)  ([A-Za-z0-9 ]+)", l)
+    if m:
+        chipset = m.group(2)
+        
+        #gen = generation(chip)
+        if chipset == "Navi 31 ":
+            chip['GFX11']['NAVI31'] = m.group(1)
+        #print m.group(1), chip
 import json
 print json.dumps({'1002': chip},indent=4, separators=(',', ': '))
 #print cards
