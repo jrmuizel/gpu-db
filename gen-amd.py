@@ -162,6 +162,7 @@ chip['GFX11'] = collections.OrderedDict()
 chip['GFX11']['NAVI31'] = []
 chip['GFX11']['NAVI32'] = []
 chip['GFX11']['NAVI33'] = []
+chip['GFX11']['Phoenix'] = []
 if len(cards) != 0:
     print cards
     assert len(cards) == 0
@@ -182,6 +183,8 @@ for l in lines:
             chip['GFX11']['NAVI32'] += [m.group(1)]
         if chipset == "Navi 33 ":
             chip['GFX11']['NAVI33'] += [m.group(1)]
+        if chipset == "Phoenix1":
+            chip['GFX11']['Phoenix'] += [m.group(1)]
         if chipset == "Mendocino":
             chip['GFX10_3']['MENDOCINO'] += [m.group(1)]
         if chipset == "Raphael":
