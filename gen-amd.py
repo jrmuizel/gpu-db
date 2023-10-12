@@ -160,6 +160,8 @@ chip['GFX10_3']['MENDOCINO'] = []
 chip['GFX10_3']['RAPHAEL'] = []
 chip['GFX11'] = collections.OrderedDict()
 chip['GFX11']['NAVI31'] = []
+chip['GFX11']['NAVI32'] = []
+chip['GFX11']['NAVI33'] = []
 if len(cards) != 0:
     print cards
     assert len(cards) == 0
@@ -176,6 +178,10 @@ for l in lines:
         #gen = generation(chip)
         if chipset == "Navi 31 ":
             chip['GFX11']['NAVI31'] += [m.group(1)]
+        if chipset == "Navi 32 ":
+            chip['GFX11']['NAVI32'] += [m.group(1)]
+        if chipset == "Navi 33 ":
+            chip['GFX11']['NAVI33'] += [m.group(1)]
         if chipset == "Mendocino":
             chip['GFX10_3']['MENDOCINO'] += [m.group(1)]
         if chipset == "Raphael":
