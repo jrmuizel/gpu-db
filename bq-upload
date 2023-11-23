@@ -1,0 +1,3 @@
+bq load --replace moz-fx-data-bq-graphics:devices.nvidia nvidia.csv
+bq load --replace moz-fx-data-bq-graphics:devices.intel intel.csv
+bq load --replace moz-fx-data-bq-graphics:devices.amd amd.csv
