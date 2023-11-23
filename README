@@ -2,6 +2,6 @@ intel.json includes all current intel device ids.
 They were gathered from Wikipedia and mesa.
 (mesa/include/pci_ids/iris_pci_ids.h)
 
-amd.json is constructed from gen-amd.py
+amd.json is constructed from gen-amd.py using data from https://pci-ids.ucw.cz/
 
-nvidia.json is constructed from gen-nvidia.py
+nvidia.json is constructed from gen-nvidia.py using data from https://pci-ids.ucw.cz/
