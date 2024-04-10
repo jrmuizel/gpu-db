@@ -158,6 +158,7 @@ for i in ('SIENNA_CICHLID','NAVY_FLOUNDER', 'VANGOGH', 'DIMGREY_CAVEFISH', 'BEIG
 chip['GFX10_3']['VANGOGH'] += ["163f"]
 chip['GFX10_3']['MENDOCINO'] = []
 chip['GFX10_3']['RAPHAEL'] = []
+chip['GFX10_3']['Sephiroth'] = []
 chip['GFX11'] = collections.OrderedDict()
 chip['GFX11']['NAVI31'] = []
 chip['GFX11']['NAVI32'] = []
@@ -189,7 +190,9 @@ for l in lines:
             chip['GFX10_3']['MENDOCINO'] += [m.group(1)]
         if chipset == "Raphael":
             chip['GFX10_3']['RAPHAEL'] += [m.group(1)]
-        #print m.group(1), chip
+        if chipset == "Sephiroth ":
+            chip['GFX10_3']['Sephiroth'] += [m.group(1)]
+        #print chipset, m.group(1)
 import json
 print json.dumps({'1002': chip},indent=4, separators=(',', ': '))
 #print cards
