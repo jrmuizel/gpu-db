@@ -204,6 +204,8 @@ for l in lines:
             chip['GFX11']['Phoenix'] += [m.group(1)]
         if chipset == "Phoenix3":
             chip['GFX11']['Phoenix'] += [m.group(1)]
+        if chipset == "Phoenix4":
+            chip['GFX11']['Phoenix'] += [m.group(1)]
         if chipset == "Mendocino":
             chip['GFX10_3']['MENDOCINO'] += [m.group(1)]
         if chipset == "Raphael":
