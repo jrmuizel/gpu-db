@@ -186,6 +186,10 @@ for l in lines:
             chip['GFX11']['NAVI33'] += [m.group(1)]
         if chipset == "Phoenix1":
             chip['GFX11']['Phoenix'] += [m.group(1)]
+        if chipset == "Phoenix2":
+            chip['GFX11']['Phoenix'] += [m.group(1)]
+        if chipset == "Phoenix3":
+            chip['GFX11']['Phoenix'] += [m.group(1)]
         if chipset == "Mendocino":
             chip['GFX10_3']['MENDOCINO'] += [m.group(1)]
         if chipset == "Raphael":
