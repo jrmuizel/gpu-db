@@ -164,6 +164,12 @@ chip['GFX11']['NAVI31'] = []
 chip['GFX11']['NAVI32'] = []
 chip['GFX11']['NAVI33'] = []
 chip['GFX11']['Phoenix'] = []
+chip['GFX11.5'] = collections.OrderedDict()
+chip['GFX11.5']['STRIX'] = []
+chip['GFX11.5']['KRACKEN'] = []
+chip['GFX12'] = collections.OrderedDict()
+chip['GFX12']['NAVI44'] = []
+chip['GFX12']['NAVI48'] = []
 if len(cards) != 0:
     print cards
     assert len(cards) == 0
@@ -184,6 +190,14 @@ for l in lines:
             chip['GFX11']['NAVI32'] += [m.group(1)]
         if chipset == "Navi 33 ":
             chip['GFX11']['NAVI33'] += [m.group(1)]
+        if chipset == "Strix ":
+            chip['GFX11.5']['STRIX'] += [m.group(1)]
+        if chipset == "Krackan ":
+            chip['GFX11.5']['KRACKEN'] += [m.group(1)]
+        if chipset == "Navi 48 ":
+            chip['GFX12']['NAVI48'] += [m.group(1)]
+        if chipset == "Navi 44 ":
+            chip['GFX12']['NAVI44'] += [m.group(1)]
         if chipset == "Phoenix1":
             chip['GFX11']['Phoenix'] += [m.group(1)]
         if chipset == "Phoenix2":

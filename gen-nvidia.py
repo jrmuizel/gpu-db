@@ -23,6 +23,10 @@ def generation(chip):
         return "Ada"
     if chip[0:2] == "GN":
         return "Ada"
+    if chip[0:2] == "GB":
+        return "Blackwell"
+    if chip[0:2] == "GH":
+        return "Hopper"
     if chip[0:3] == "GT2":
         return "Tesla2"
     if re.match("MCP89", chip):
